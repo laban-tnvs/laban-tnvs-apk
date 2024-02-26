@@ -2,17 +2,17 @@ import React from 'react';
 
 export default function HeroSection() {
   const handleDownload = () => {
-    // Create an anchor element
+    
     const anchor = document.createElement('a');
-    // Set the href attribute to the relative path of the APK file
+    
     anchor.href = '/laban-tnvs.apk';
-    // Set the download attribute to specify the file name
+    
     anchor.download = 'laban-tnvs.apk';
-    // Append the anchor element to the document body
+  
     document.body.appendChild(anchor);
-    // Click the anchor element to trigger the download
+  
     anchor.click();
-    // Remove the anchor element from the document body
+
     document.body.removeChild(anchor);
   };
 
