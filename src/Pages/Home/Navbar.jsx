@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import HeroSection from "./HeroSection"; 
 
 function Navbar() {
   const [navActive, setNavActive] = useState(false);
@@ -15,7 +16,7 @@ function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 500) {
-        closeMenu;
+        closeMenu();
       }
     };
 
@@ -28,17 +29,23 @@ function Navbar() {
 
   useEffect(() => {
     if (window.innerWidth <= 1200) {
-      closeMenu;
+      closeMenu();
     }
   }, []);
+
+  const handleDownload = () => {
+    const anchor = document.createElement('a');
+    anchor.href = '/laban-tnvs.apk';
+    anchor.download = 'laban-tnvs.apk';
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+  };
 
   return (
     <nav className={`navbar ${navActive ? "active" : ""}`}>
       <div>
-        <header>
-  Laban TNVS
-</header>
-
+        <header>Laban TNVS</header>
       </div>
       <a
         className={`nav__hamburger ${navActive ? "active" : ""}`}
@@ -80,18 +87,13 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <Link
-        onClick={closeMenu}
-        activeClass="navbar--active-content"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-        to="Contact"
+      {}
+      <button
+        onClick={handleDownload}
         className="btn btn-outline-primary"
       >
         Download
-      </Link>
+      </button>
     </nav>
   );
 }
